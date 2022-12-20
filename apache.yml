@@ -4,26 +4,30 @@
     yum:
       name: httpd
       state: latest
-  - name: Make sure a service is running
+
+  - name: Start Apache
     systemd:
       state: started
       enabled: yes
       name: httpd
-
+  
   - name: Install Unzip
     yum:
       name: unzip
       state: latest
-  - name: Unarchive a file that needs to be downloaded 
+
+  - name: Unarchive Template
     unarchive:
-      src: https://www.free-css.com/assets/files/free-css-templates/download/page286/creative-studio.zip
+      src: https://www.free-css.com/assets/files/free-css-templates/download/page1/photoprowess.zip
       dest: /tmp/
       remote_src: yes
-  - name: Copy files to /var/www/html
+
+  - name: Copy Template to /var/www/html
     copy:
-      src: /tmp/
+      src: /tmp/photoprowess/index.html
       dest: /var/www/html/
       remote_src: yes
+      
   - name: Restart Apache
     service:
       name: httpd
