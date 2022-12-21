@@ -19,12 +19,12 @@
   - name: Download and extract Template
     unarchive:
       src: https://www.free-css.com/assets/files/free-css-templates/download/page286/creative-studio.zip
-      dest: /tmp/creative-studio.zip
+      dest: /tmp/
       remote_src: yes
 
   - name: Copy Template to /var/www/html
     copy:
-      src: /tmp/creative-studio/index.html
+      src: /tmp/creative-studio/public_html/
       dest: /var/www/html/
       remote_src: yes
       
