@@ -1,11 +1,11 @@
-- hosts: web
+- hosts: all
   tasks:
   - name: Install Apache
     yum:
       name: httpd
       state: latest
 
-  - name: Start Apache
+  - name: Start service httpd, if not started
     systemd:
       state: started
       enabled: yes
@@ -16,15 +16,15 @@
       name: unzip
       state: latest
 
-  - name: Unarchive Template
+  - name: Download and extract Template
     unarchive:
-      src: https://www.free-css.com/assets/files/free-css-templates/download/page1/photoprowess.zip
-      dest: /tmp/
+      src: https://www.free-css.com/assets/files/free-css-templates/download/page286/creative-studio.zip
+      dest: /tmp/creative-studio.zip
       remote_src: yes
 
   - name: Copy Template to /var/www/html
     copy:
-      src: /tmp/photoprowess/index.html
+      src: /tmp/creative-studio/index.html
       dest: /var/www/html/
       remote_src: yes
       
